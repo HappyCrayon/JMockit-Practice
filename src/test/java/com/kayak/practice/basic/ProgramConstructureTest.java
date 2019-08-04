@@ -1,5 +1,6 @@
-package com.kayak.practice.business;
+package com.kayak.practice.basic;
 
+import com.kayak.practice.business.HelloJMockit;
 import mockit.Expectations;
 import mockit.Mocked;
 import mockit.Verifications;

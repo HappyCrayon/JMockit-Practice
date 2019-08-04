@@ -1,4 +1,4 @@
-package com.kayak.practice.business;
+package com.kayak.practice.basic;
 
 import mockit.Expectations;
 import mockit.Mocked;
