@@ -22,6 +22,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <jmockit-version>1.36</jmockit-version>
+        <junit-version>4.12</junit-version>
         <swagger-version>2.5.0</swagger-version>
     </properties>
 
@@ -29,13 +31,13 @@
         <dependency>
             <groupId>org.jmockit</groupId>
             <artifactId>jmockit</artifactId>
-            <version>1.20</version>
+            <version>${jmockit-version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit-version}</version>
             <scope>test</scope>
         </dependency>
         <!--<dependency>
@@ -105,6 +107,15 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <argLine>-javaagent:"${settings.localRepository}/org/jmockit/jmockit/${jmockit-version}/jmockit-${jmockit-version}.jar=coverage"</argLine>
+                        <disableXmlReport>false</disableXmlReport>
+                        <systemPropertyVariables>
+                            <coverage-output>html</coverage-output>
+                            <coverage-outputDir>${project.build.directory}/codecoverage-output</coverage-outputDir>
+                            <coverage-metrics>all</coverage-metrics>
+                        </systemPropertyVariables>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
